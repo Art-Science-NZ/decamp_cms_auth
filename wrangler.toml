@@ -1,0 +1,20 @@
+name = "decap-gateway"  # Replace with your project name
+main = "src/index.js"
+compatibility_date = "2025-02-24"
+
+account_id = "xxx"  # Replace with your Cloudflare account ID
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[env.production]
+vars = { WRANGLER_DEV = "false" }
+kv_namespaces = [
+  { binding = "KV", id = "xxx" }
+]
+
+[env.dev]
+vars = { WRANGLER_DEV = "true" }
+kv_namespaces = [
+  { binding = "KV", id = "xxx", preview_id = "xxx" }
+]
