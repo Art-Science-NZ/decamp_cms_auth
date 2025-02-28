@@ -54,7 +54,6 @@ async function handleLogin(request, env, config, corsHeaders) {
     if (site.includes("localhost") || site.startsWith("127.") || site.startsWith("192.")) {
       site = "localhost"; // Assign a consistent value for local dev environments
     }
-    console.log(site);
     // Parse the request body
     const { email, password } = await request.json();
     if (!email || !password) {
@@ -78,7 +77,6 @@ async function handleLogin(request, env, config, corsHeaders) {
 
     // Retrieve GitHub fine-grained token from KV storage using the site hostname
     const githubToken = await env.github_tokens.get(site);
-    console.log(githubToken);
     if (!githubToken) {
       return new Response(JSON.stringify({ error: `No GitHub token found for site: ${site}` }), { status: 403, headers: corsHeaders });
     }
