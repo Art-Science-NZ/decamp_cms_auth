@@ -10,11 +10,14 @@ head_sampling_rate = 1
 [env.production]
 vars = { WRANGLER_DEV = "false" }
 kv_namespaces = [
-  { binding = "KV", id = "xxx" }
+  { binding = "KV", id = "xxx" },
+  { binding = "github_tokens", id = "xxx" },
 ]
 
 [env.dev]
 vars = { WRANGLER_DEV = "true" }
 kv_namespaces = [
-  { binding = "KV", id = "xxx", preview_id = "xxx" }
+  { binding = "KV", id = "xxx", preview_id = "xxx" },
+  { binding = "github_tokens", id = "xxx", preview_id = "xxx" },
 ]
+observability = { enabled = true, head_sampling_rate = 1 }
